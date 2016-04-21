@@ -1,0 +1,18 @@
+table.gwt-TabBar.searchCelebrationTimeTabBar {
+    display: none;
+}
+
+.messeinfo {
+    border: 1px solid black;
+    margin-top: 5px;
+    border-radius: 10px;
+}
+
+.messeinfo p {
+    margin: 0;
+}
+
+.messeinfo img {
+    margin: 5px;
+    width: 100px;
+}
