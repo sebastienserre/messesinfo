@@ -2,7 +2,7 @@
 Contributors: sebastien@thivinfo.com, 5p2p
 Tags: messes, horaires, messesinfo, eglise, catholique
 Requires at least: 4.6
-Tested up to: 4.0.3
+Tested up to: 5.0
 Stable tag: 1.4.0
 License: GPL V2 or later
 
