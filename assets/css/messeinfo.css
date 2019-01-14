@@ -1,0 +1,49 @@
+.clear{
+    clear: both;
+}
+
+table.gwt-TabBar.searchCelebrationTimeTabBar {
+    display: none;
+}
+
+.messeinfo {
+    border: 1px solid black;
+    margin-top: 5px;
+    border-radius: 10px;
+    float: left;
+    text-transform: capitalize;
+    width: 100%;
+}
+
+.messeinfo p {
+    margin: 0;
+}
+
+img.mass-img {
+    margin: 5px;
+    float: left;
+    height: 150px;
+}
+
+.mass-infos{
+    padding: 5px;
+}
+
+p.promote{
+    text-align: center;
+}
+
+.widget-messesinfo p {
+    line-height: 20px;
+}
+
+/**
+map on shortcode
+ */
+
+.acf-map {
+    width: 100%;
+    height: 200px;
+    border: #ccc solid 1px;
+    margin: 20px 0;
+}

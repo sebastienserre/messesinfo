@@ -24,20 +24,20 @@ public static $department = array();
 				'name'                    => 'MessesInfo',
 				'base'                    => 'messeinfo',
 				'show_settings_on_create' => true,
-				'description'             => __( 'Add Messeinfo in your Website', 'thfo-messinfo' ),
+				'description'             => __( 'Add Messeinfo in your Website', 'messesinfo' ),
 				'params'                  => array(
 					array(
 						"type"        => "textfield",
 						"holder"      => "div",
 						"class"       => "",
-						"heading"     => __( "Commune", "my-text-domain" ),
+						"heading"     => __( "City", "messesinfo" ),
 						"param_name"  => "city",
-						"value"       => __( "Nom de la Ville", "my-text-domain" ),
-						"description" => __( "Entrez votre commune.", "my-text-domain" ),
+						"value"       => __( "City Name", "messesinfo" ),
+						"description" => __( "Entrez votre commune.", "messesinfo" ),
 					),
 						array(
 							'type' => 'dropdown',
-							'heading' => __('Choose your department', "thfo_messinfo"),
+							'heading' => __('Choose your department', "messesinfo"),
 							'param_name' => 'dept',
 							//'value' => array($this, 'thfo_get_dept' ),
 							'value' => self::$department,
@@ -51,7 +51,7 @@ public static $department = array();
 	}
 
 	public static function thfo_get_dept() {
-		$url   = file_get_contents( "http://egliseinfo.catholique.fr/api/v2/departements?format=JSON" );
+		$url   = file_get_contents( "http://www.messes.info/api/v2/departements?format=JSON" );
 		$depts = json_decode( $url );
 		//var_dump($depts);
 			foreach ( $depts as $dept ) {
