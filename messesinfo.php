@@ -1,15 +1,14 @@
 <?php
 /*
   Plugin Name: Messesinfo
-  Plugin URI: https://5pains-et-2poissons.fr/extensions-wordpress-messesinfos/
+  Plugin URI: https://paroisse-catholique.fr
   Description: Display mass schedule on your website!
   Version: 1.4.0
-  Author: 5P2P
+  Author: thivinfo.com
   Stable tag: 1.4.0
-Tested up to: 4.8
-  Author URI: http://5pains-et-2poissons.fr/
+Tested up to: 5.1
+  Author URI: https://thivinfo.com/
   Text Domain: messesinfo
-Domain path: /languages
  */
 // don't load directly
 if ( ! defined( 'ABSPATH' ) ) {

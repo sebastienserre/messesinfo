@@ -1,8 +1,8 @@
 === Messesinfo ===
-Contributors: sebastienserre, 5p2p
+Contributors: sebastienserre
 Tags: messes, horaires, messesinfo, eglise, catholique
 Requires at least: 4.6
-Tested up to: 5.0
+Tested up to: 5.1
 Stable tag: 1.4.0
 License: GPL V2 or later
 
