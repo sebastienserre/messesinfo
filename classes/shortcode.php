@@ -11,7 +11,9 @@ class thfo_messeinfo_shortcode {
 
 		$a = shortcode_atts( array( 'id' => 'plaisir 78', 'result' => '5' ), $atts );
 
-		$id             = explode( ' ', $atts['id'] );
+		$id = esc_html( $atts['id'] );
+
+	//	$id             = explode( '/', $atts['id'] );
 		$atts['result'] = intval( $atts['result'] );
 
 		/**
@@ -30,9 +32,11 @@ class thfo_messeinfo_shortcode {
 		 * Transient creation to store data 24h
 		 */
 
+		$url = "http://www.messes.info/api/v2$id?userkey=messesinfo&format=json";
 		$mass = get_transient( 'messesinfo_data_sc' );
 		if ( ! $mass ) {
-			$url  = file_get_contents( "http://www.messes.info/api/v2/horaires/" . $id[0] . "%20" . $id[1] . "?userkey=messesinfo&format=json" );
+			//$url  = file_get_contents( "http://www.messes.info/api/v2/horaires/" . $id[0] . "%20" . $id[1] . "?userkey=messesinfo&format=json" );
+			$url  = file_get_contents( $url );
 			$mass = json_decode( $url, true );
 			set_transient( 'messesinfo_data_sc', $mass, 86400 );
 		}

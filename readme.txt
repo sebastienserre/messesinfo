@@ -8,7 +8,6 @@ License: GPL V2 or later
 
 == Description ==
 Display mass schedule with shortcode in your WordPress Website
-Created by http://5pains-et-2poissons.fr/
 
 == Installation ==
 1. unzip
