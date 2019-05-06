@@ -1,5 +1,7 @@
 <?php
 
+use MESSESINFO\API\Messesinfo;
+
 /**
  * Created by PhpStorm.
  * User: sebastien
@@ -10,6 +12,7 @@ class settings {
 	public function __construct() {
 		add_action('admin_menu', array($this, 'add_admin_menu'));
 		add_action('admin_init', array($this, 'register_settings'));
+		add_action( 'admin_init', array( $this, 'search_localityId' ) );
 	}
 
 	public function add_admin_menu()
@@ -17,6 +20,7 @@ class settings {
 	{
 		add_menu_page('MessesInfo', 'MessesInfo', 'manage_options', 'messeinfo', array($this, 'menu_html'),THFO_MESSINFO_URL . 'assets/img/icon.png');
 		add_submenu_page('messeinfo',__('Options','messesinfo'),__('Options','messesinfo'),'manage_options', 'option_menu', array($this, 'promote_html'));
+		add_submenu_page('messeinfo',__('Tools','messesinfo'),__('Tools','messesinfo'),'manage_options', 'tools', array($this, 'tools_html'));
 
 	}
 
@@ -38,8 +42,31 @@ class settings {
 		echo '<p>' . __('Shortcode example: ','messesinfo') .'[messesinfo id="plaisir 78" result ="3"]'. '</p>';
 		echo '<p>' . __('Search Shortcode: ','messesinfo') .'[messesinfo_search result= "4"]'. '</p>';
 
-
 	}
+
+	public function tools_html(){
+	    ?>
+	    <h2><?php _e('Tools', 'messesinfo'); ?></h2>
+        <form method="post" action="admin.php?page=tools">
+		<label for="localityId"><?php  _e('Find a LocalityId: ','messesinfo') ?></label><input name="localityId" type="text">
+	        <?php submit_button(__('Search')); ?>
+        </form>
+    <?php
+        echo $this->search_localityId();
+        }
+
+	public function search_localityId(){
+		if ( !empty( $_POST['localityId'] ) ){
+		    $search = esc_attr( $_POST['localityId'] );
+		    $localityID = Messesinfo::get_localityId( $search );
+		    add_action( 'messesinfos_localityId_answers', array( $this, 'localityId_answer' ) );
+        }
+		return $localityID;
+    }
+
+    public function localityId_answer( $localityID ){
+	    echo $localityID;
+    }
 
 	public function options_html(){
 		echo '<h2>Options</h2>';
@@ -52,11 +79,12 @@ class settings {
 			<?php do_settings_sections('messeinfo_settings') ?>
 			<?php submit_button(__('Save')); ?>
 
-
 		</form>
 
 		<?php
 	}
+
+
 
 	public function ads_html(){
 		$promote = get_option('thfo_ads');?>
@@ -68,6 +96,7 @@ class settings {
 	    $api = get_option('messesinfos_gmap_key');
 	    ?>
         <input type="text" name="messesinfos_gmap_key" value="<?php if ($api){ echo $api; } ?>">
+
     <?php }
 
 }
