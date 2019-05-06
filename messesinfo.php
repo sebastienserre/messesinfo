@@ -31,13 +31,13 @@ function _thfo_messinfo_load_files( $dir, $files, $prefix = '' ) {
 }
 
 add_action( 'plugins_loaded', 'messesinfo_load_file' );
-function messesinfo_load_file(){
+function messesinfo_load_file() {
 	require_once THFO_MESSINFO_DIR . 'classes/class-messesinfo.php';
 	require_once THFO_MESSINFO_DIR . 'classes/shortcode.php';
 }
 
 
-if( is_admin() ){
+if ( is_admin() ) {
 	_thfo_messinfo_load_files( THFO_MESSINFO_DIR . 'classes/admin/', array( 'settings' ) );
 }
 
@@ -46,18 +46,13 @@ function init_thfo_messinfo_plugin() {
 	// Load client
 	new thfo_messeinfo_shortcode();
 
-	 if( is_admin() ){
+	if ( is_admin() ) {
 		new settings();
 	}
 }
 
 
-add_action('wp_enqueue_scripts', 'thfo_add_style') ;
-function thfo_add_style(){
-    wp_enqueue_style('messeinfo', plugins_url('assets/css/messeinfo.css', __FILE__ ));
-}
-
-add_action( 'plugins_loaded', 'thfo_load_textdomain');
-function thfo_load_textdomain() {
-	load_plugin_textdomain( 'messesinfo', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+add_action( 'wp_enqueue_scripts', 'thfo_add_style' );
+function thfo_add_style() {
+	wp_enqueue_style( 'messeinfo', plugins_url( 'assets/css/messeinfo.css', __FILE__ ) );
 }

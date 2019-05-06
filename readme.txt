@@ -2,9 +2,11 @@
 Contributors: sebastienserre
 Tags: messes, horaires, messesinfo, eglise, catholique
 Requires at least: 4.6
+Requires PHP: 5.6
 Tested up to: 5.1
 Stable tag: 1.4.0
 License: GPL V2 or later
+
 
 == Description ==
 Display mass schedule with shortcode in your WordPress Website

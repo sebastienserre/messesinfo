@@ -1,7 +1,10 @@
 <?php
 
-
 use MESSESINFO\API\Messesinfo;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+} // Exit if accessed directly.
 
 class thfo_messeinfo_shortcode {
 	function __construct() {

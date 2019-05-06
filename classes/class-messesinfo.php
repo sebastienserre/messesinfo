@@ -3,6 +3,11 @@
 
 namespace MESSESINFO\API;
 
+use function delete_transient;
+use function explode;
+use function get_transient;
+use const HOUR_IN_SECONDS;
+use function implode;
 use function json_decode;
 use function ob_get_clean;
 use function ob_start;
@@ -76,13 +81,19 @@ class Messesinfo {
 	 * @return  $mass object
 	 */
 	public static function get_mass_data( $localityId ) {
-	    $localityId = rawurlencode( $localityId );
-		$url = "http://www.messes.info/api/v2/lieu/$localityId?userkey=test&format=json";
+		$id = self::get_localityId_alias( $localityId );
+	    $mass = get_transient( 'messesinfo_localityId' . $id );
 
-		$response    = wp_remote_get( $url );
-		$status_code = wp_remote_retrieve_response_code( $response );
-		if ( 200 === $status_code ) {
-			$mass = json_decode( wp_remote_retrieve_body( $response ) );
+		if ( ! $mass ) {
+			$localityId = rawurlencode( $localityId );
+			$url        = "http://www.messes.info/api/v2/lieu/$localityId?userkey=test&format=json";
+
+			$response    = wp_remote_get( $url );
+			$status_code = wp_remote_retrieve_response_code( $response );
+			if ( 200 === $status_code ) {
+				$mass = json_decode( wp_remote_retrieve_body( $response ) );
+				set_transient( 'messesinfo_localityId' . $id, $mass, HOUR_IN_SECONDS * 24 );
+			}
 		}
 
 		return $mass;
@@ -90,17 +101,47 @@ class Messesinfo {
 	}
 
 	public static function get_locality_info( $localityId ){
-		$localityId = rawurlencode( $localityId );
-		$url = "http://www.messes.info/api/v2/lieu-info/$localityId?userkey=test&format=json";
+		$id         = self::get_localityId_alias( $localityId );
+	    $locality = get_transient( 'messesinfo_locality_info' . $id );
 
-		$response = wp_remote_get( $url );
-		$status_code = wp_remote_retrieve_response_code( $response );
-		if ( 200 === $status_code ) {
-			$locality = json_decode( wp_remote_retrieve_body( $response ) );
-		}
+	    if ( ! $locality ) {
+
+		    $localityId = rawurlencode( $localityId );
+		    $url        = "http://www.messes.info/api/v2/lieu-info/$localityId?userkey=test&format=json";
+
+		    $response    = wp_remote_get( $url );
+		    $status_code = wp_remote_retrieve_response_code( $response );
+		    if ( 200 === $status_code ) {
+			    $locality = json_decode( wp_remote_retrieve_body( $response ) );
+			    set_transient( 'messesinfo_locality_info' . $id, $locality, HOUR_IN_SECONDS * 24 );
+		    }
+	    }
 
 		return $locality;
     }
+
+	public static function get_localityId_alias( $localityId ){
+
+	    $id = explode( '/', $localityId );
+	    $id = implode( '-', $id );
+
+	    $alias = get_transient( 'messesinfo_alias' . $id );
+
+	    if ( ! $alias ) {
+		    $localityId = rawurlencode( $localityId );
+		    $url        = "http://www.messes.info/api/v2/lieu-info/$localityId?userkey=test&format=json";
+
+		    $response    = wp_remote_get( $url );
+		    $status_code = wp_remote_retrieve_response_code( $response );
+		    if ( 200 === $status_code ) {
+			    $alias = json_decode( wp_remote_retrieve_body( $response ) );
+			    $alias = $alias->alias;
+			    set_transient( 'messesinfo_alias' . $id, $alias, HOUR_IN_SECONDS * 24 );
+		    }
+	    }
+
+		return $alias;
+	}
 
 	public static function promote() {
 		$promote = get_option( 'thfo_ads' );
