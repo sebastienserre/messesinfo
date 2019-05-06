@@ -39,9 +39,7 @@ class settings {
 		echo '<p>' . __('By default the shortcode [messesinfo] comes without any arguments.','messesinfo'). '</p>';
 		echo '<p>' . __('Add the city name or the paroisse name with city as follow to get the info you want:','messesinfo') . ' <strong>' . __('Plaisir 78 or Chapelle Saint Bernard Paris','messesinfo'). '</strong></p>';
 		echo '<p>' . __('As you do on <a href="http://egliseinfo.catholique.fr">http://egliseinfo.catholique.fr</a>','messesinfo') .'</p>';
-		echo '<p>' . __('Shortcode example: ','messesinfo') .'[messesinfo id="plaisir 78" result ="3"]'. '</p>';
-		echo '<p>' . __('Search Shortcode: ','messesinfo') .'[messesinfo_search result= "4"]'. '</p>';
-
+		echo '<p>' . __('Shortcode example: ','messesinfo') .'[messesinfo localityId="LocalityID" result=25]'. '</p>';
 	}
 
 	public function tools_html(){
