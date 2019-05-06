@@ -27,9 +27,9 @@ class settings {
 	public function register_settings(){
 		add_settings_section('messeinfo_ads', __('Options','messesinfo'), array($this, 'options_html'), 'messeinfo_settings');
 		register_setting('messeinfo_settings', 'thfo_ads');
-		register_setting('messeinfo_settings', 'messesinfos_gmap_key');
+	//	register_setting('messeinfo_settings', 'messesinfos_gmap_key');
 		add_settings_field('thfo_ads', __('Add a promote link?', 'messesinfo'), array($this, 'ads_html'),'messeinfo_settings', 'messeinfo_ads');
-		add_settings_field('messesinfos_gmap', __('Add a your Google Map API KEY', 'messesinfo'), array($this, 'messesinfos_gmap_key'),'messeinfo_settings', 'messeinfo_ads');
+	//	add_settings_field('messesinfos_gmap', __('Add a your Google Map API KEY', 'messesinfo'), array($this, 'messesinfos_gmap_key'),'messeinfo_settings', 'messeinfo_ads');
 
 	}
 
