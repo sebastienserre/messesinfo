@@ -34,6 +34,7 @@ add_action( 'plugins_loaded', 'messesinfo_load_file' );
 function messesinfo_load_file(){
 	require_once THFO_MESSINFO_DIR . 'classes/class-messesinfo.php';
 	require_once THFO_MESSINFO_DIR . 'classes/shortcode.php';
+	require_once THFO_MESSINFO_DIR . 'blocks/messesinfo.php';
 }
 
 
