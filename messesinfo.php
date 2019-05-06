@@ -3,9 +3,9 @@
   Plugin Name: Messesinfo
   Plugin URI: https://paroisse-catholique.fr
   Description: Display mass schedule on your website!
-  Version: 1.4.0
+  Version: 1.5.0
   Author: thivinfo.com
-  Stable tag: 1.4.0
+  Stable tag: 1.5.0
 Tested up to: 5.1
   Author URI: https://thivinfo.com/
   Text Domain: messesinfo
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Plugin constants
-define( 'THFO_MESSINFO_VERSION', '1.4.0' );
+define( 'THFO_MESSINFO_VERSION', '1.5.0' );
 define( 'THFO_MESSINFO_FOLDER', 'messesinfo' );
 define( 'THFO_MESSINFO_URL', plugin_dir_url( __FILE__ ) );
 define( 'THFO_MESSINFO_DIR', plugin_dir_path( __FILE__ ) );
