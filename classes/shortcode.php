@@ -32,9 +32,16 @@ class thfo_messeinfo_shortcode {
 		foreach ( $mass->celebrationsTime as $mess ) {
 			if ( $i <= $atts['result'] ) {
 				$newdate = date_timestamp_get( date_create( $mess->date ) );
-				if ( $mess->timeType === 'SUNDAYMASS' ) {
-					$type = __( 'Weekly Mass', 'messesinfo' );
-				}
+				switch ( $mess->timeType ){
+                    case 'SUNDAYMASS':
+	                    $type = __( 'Weekly Mass', 'messesinfo' );
+	                    break;
+                    case 'WEEKMASS':
+	                    $type = __( 'Daily Mass', 'messesinfo' );
+	                    break;
+
+                }
+
 				$locality = Messesinfo::get_locality_info( $localityId );
 				?>
                 <div class="messeinfo messeinfo-<?php echo $i ?>">
