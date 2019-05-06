@@ -102,6 +102,12 @@ class Messesinfo {
 		return $locality;
     }
 
+	public static function promote() {
+		$promote = get_option( 'thfo_ads' );
+		if ( $promote === '1' ) {
+			return '<p class="promote">' . __( 'Find all Mass hours on: ', 'messesinfo' ) . ' <a	href="http://egliseinfo.catholique.fr/">egliseinfo.catholique.fr</a></p>';
+		}
+	}
 }
 
 new Messesinfo();

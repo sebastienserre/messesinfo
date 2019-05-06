@@ -77,7 +77,7 @@ class thfo_messeinfo_shortcode {
 		}
 
 		$shortcode = ob_get_clean();
-		$shortcode .= messesinfos_widget::messesinfo_promote();
+		$shortcode .= Messesinfo::promote();
 
 		return $shortcode;
 	}
