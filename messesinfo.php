@@ -15,11 +15,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-
-add_action( 'widgets_init', function () {
-	register_widget( 'messesinfos_widget' );
-} );
-
 // Plugin constants
 define( 'THFO_MESSINFO_VERSION', '1.4.0' );
 define( 'THFO_MESSINFO_FOLDER', 'messesinfo' );
@@ -49,9 +44,7 @@ if( is_admin() ){
 add_action( 'plugins_loaded', 'init_thfo_messinfo_plugin' );
 function init_thfo_messinfo_plugin() {
 	// Load client
-	new messesinfos_widget();
 	new thfo_messeinfo_shortcode();
-	//new visual_composer();
 
 	 if( is_admin() ){
 		new settings();
