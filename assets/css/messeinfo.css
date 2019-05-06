@@ -56,10 +56,8 @@ map on shortcode
 .messesinfo-right {
     float: right;
     width: 30%;
-    paddinf: 10px;
+    padding: 10px;
 }
-
-
 
 .messesinfo-right img {
     max-height: 200px;
