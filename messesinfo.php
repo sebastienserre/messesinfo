@@ -22,7 +22,7 @@ add_action( 'widgets_init', function () {
 
 // Plugin constants
 define( 'THFO_MESSINFO_VERSION', '1.4.0' );
-define( 'THFO_MESSINFO_FOLDER', 'messinfo' );
+define( 'THFO_MESSINFO_FOLDER', 'messesinfo' );
 define( 'THFO_MESSINFO_URL', plugin_dir_url( __FILE__ ) );
 define( 'THFO_MESSINFO_DIR', plugin_dir_path( __FILE__ ) );
 
@@ -35,8 +35,13 @@ function _thfo_messinfo_load_files( $dir, $files, $prefix = '' ) {
 	}
 }
 
-// Plugin client classes
-_thfo_messinfo_load_files( THFO_MESSINFO_DIR . 'classes/', array( 'shortcode','visual_composer','widget' ) );
+add_action( 'plugins_loaded', 'messesinfo_load_file' );
+function messesinfo_load_file(){
+	require_once THFO_MESSINFO_DIR . 'classes/class-messesinfo.php';
+	require_once THFO_MESSINFO_DIR . 'classes/shortcode.php';
+	require_once THFO_MESSINFO_DIR . 'classes/visual_composer.php';
+	require_once THFO_MESSINFO_DIR . 'classes/widget.php';
+}
 
 
 if( is_admin() ){
