@@ -47,3 +47,20 @@ map on shortcode
     border: #ccc solid 1px;
     margin: 20px 0;
 }
+
+.messesinfo-left {
+    float: left;
+    width: 70%;
+}
+
+.messesinfo-right {
+    float: right;
+    width: 30%;
+    paddinf: 10px;
+}
+
+
+
+.messesinfo-right img {
+    max-height: 200px;
+}
