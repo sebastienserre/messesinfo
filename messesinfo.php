@@ -61,11 +61,3 @@ add_action( 'plugins_loaded', 'thfo_load_textdomain');
 function thfo_load_textdomain() {
 	load_plugin_textdomain( 'messesinfo', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
-
-function messesinfos_add_scripts() {
-	$api = get_option('messesinfos_gmap_key');
-	wp_enqueue_script( 'google-map', 'https://maps.googleapis.com/maps/api/js?key='.$api, array(), '3', true );
-	wp_enqueue_script( 'google-map-init', plugins_url('assets/js/messesinfos-map.js', __FILE__ ), array('google-map', 'jquery'), '0.1', true );
-}
-
-add_action( 'wp_enqueue_scripts', 'messesinfos_add_scripts' );
