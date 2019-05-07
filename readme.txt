@@ -22,7 +22,11 @@ Display mass schedule with shortcode in your WordPress Website
 With the shortcode [messesinfo localityId='LocalityID' result=25].
 
 = Where can I found the LocalityID? =
-You can find it in the plugin's settings. In tool subpage.
+You can find it in the plugin's settings. In tool submenu.
+
+= Where can I see how it works?
+An example with Eglise de la Madeleine in Paris is displayed on [Paroisse-catholique.fr](https://template.paroisse-catholique.fr/)
+
 
 == Upgrade Notice ==
 
