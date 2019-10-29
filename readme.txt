@@ -10,6 +10,9 @@ License: GPL V2 or later
 
 == Description ==
 Display mass schedule with shortcode in your WordPress Website
+This service is freelys provided by [Paroisse-catholique.fr](https://template.paroisse-catholique.fr/)
+
+The CEF seems to restrict API Access. I will update this plugin asap.
 
 == Installation ==
 1. unzip

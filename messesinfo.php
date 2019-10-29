@@ -4,10 +4,10 @@
   Plugin URI: https://paroisse-catholique.fr
   Description: Display mass schedule on your website!
   Version: 1.5.0
-  Author: thivinfo.com
+  Author: paroisse-catholique.fr
   Stable tag: 1.5.0
 Tested up to: 5.1
-  Author URI: https://thivinfo.com/
+  Author URI: https://paroisse-catholique.fr/
   Text Domain: messesinfo
  */
 // don't load directly
