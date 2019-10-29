@@ -1,6 +1,6 @@
 === Messesinfo ===
 Contributors: sebastienserre
-Tags: messes, horaires, messesinfo, eglise, catholique
+Tags: messes, horaires, messesinfo, egliseinfo, catholique
 Requires at least: 4.6
 Requires PHP: 5.6
 Tested up to: 5.1
