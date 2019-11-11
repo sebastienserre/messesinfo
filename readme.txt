@@ -4,7 +4,7 @@ Tags: messes, horaires, messesinfo, egliseinfo, catholique
 Requires at least: 4.6
 Requires PHP: 5.6
 Tested up to: 5.3
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 License: GPL V2 or later
 
 

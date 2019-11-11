@@ -3,10 +3,10 @@
   Plugin Name: Messesinfo
   Plugin URI: https://paroisse-catholique.fr
   Description: Display mass schedule on your website!
-  Version: 1.5.0
+  Version: 1.5.1
   Author: paroisse-catholique.fr
-  Stable tag: 1.5.0
-Tested up to: 5.1
+  Stable tag: 1.5.1
+Tested up to: 5.3
   Author URI: https://paroisse-catholique.fr/
   Text Domain: messesinfo
  */
