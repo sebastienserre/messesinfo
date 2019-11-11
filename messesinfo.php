@@ -36,6 +36,10 @@ function messesinfo_load_file() {
 	require_once THFO_MESSINFO_DIR . 'classes/shortcode.php';
 }
 
+add_action( 'admin_print_styles', 'messesinfo_load_admin_style' );
+function messesinfo_load_admin_style() {
+	wp_enqueue_style( 'admin-messesinfo', THFO_MESSINFO_URL . 'assets/css/admin.css');
+}
 
 if ( is_admin() ) {
 	_thfo_messinfo_load_files( THFO_MESSINFO_DIR . 'classes/admin/', array( 'settings' ) );

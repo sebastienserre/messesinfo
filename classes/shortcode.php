@@ -97,6 +97,11 @@ class thfo_messeinfo_shortcode {
 		$shortcode = ob_get_clean();
 		$shortcode .= Messesinfo::promote();
 
+		/**
+		 * Waiting for an userkey from CEF
+		 */
+		$shortcode = '<p class="warning">' . __( 'The Conférence des Evêques de France (CEF) are now asking for an userkey to use the 
+		Messesinfo API. Please ask them one and contact me with (support@thivinfo.com). This plugin can\'t work without this userkey', 'messesinfo' ) . '</p>';
 		return $shortcode;
 	}
 }

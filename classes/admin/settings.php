@@ -40,6 +40,9 @@ class settings {
 		echo '<p>' . __('Add the city name or the paroisse name with city as follow to get the info you want:','messesinfo') . ' <strong>' . __('Plaisir 78 or Chapelle Saint Bernard Paris','messesinfo'). '</strong></p>';
 		echo '<p>' . __('As you do on <a href="http://egliseinfo.catholique.fr">http://egliseinfo.catholique.fr</a>','messesinfo') .'</p>';
 		echo '<p>' . __('Shortcode example: ','messesinfo') .'[messesinfo localityId="LocalityID" result=25]'. '</p>';
+		echo '<p class="warning"><strong>' . __( 'The Conférence des Evêques de France (CEF) are now asking for an userkey to use the 
+		Messesinfo API. Please ask them one and contact me with (support@thivinfo.com). This plugin can\'t work without this userkey' , 'messesinfo' ) .
+		'</strong></p>';
 	}
 
 	public function tools_html(){
@@ -78,7 +81,6 @@ class settings {
 			<?php submit_button(__('Save')); ?>
 
 		</form>
-
 		<?php
 	}
 
