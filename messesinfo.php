@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Plugin constants
-define( 'THFO_MESSINFO_VERSION', '1.5.0' );
+define( 'THFO_MESSINFO_VERSION', '1.5.1' );
 define( 'THFO_MESSINFO_FOLDER', 'messesinfo' );
 define( 'THFO_MESSINFO_URL', plugin_dir_url( __FILE__ ) );
 define( 'THFO_MESSINFO_DIR', plugin_dir_path( __FILE__ ) );
