@@ -4,11 +4,17 @@ Tags: messes, horaires, messesinfo, egliseinfo, catholique
 Requires at least: 4.6
 Requires PHP: 5.6
 Tested up to: 5.3
-Stable tag: 1.5.1
+Stable tag: 1.5.3
 License: GPL V2 or later
 
 
 == Description ==
+
+*Important Notice*
+This Plugin is no longer maintened as the Conference des Evêques de France closed the API Access and do not allow us to
+claim for an API Key...
+If they'll change their poltics, so I will check...
+
 Display mass schedule with shortcode in your WordPress Website
 This service is freely provided by [Paroisse-catholique.fr](https://template.paroisse-catholique.fr/)
 
