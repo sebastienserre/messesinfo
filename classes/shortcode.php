@@ -24,8 +24,7 @@ class thfo_messeinfo_shortcode {
 				'several-widget'          => 'false', // add JS
 			),
 			$atts,
-			'messesinfo'
-		);
+			'messesinfo' );
 
 		if ( 'false' === $atts['several-widget'] ){
 			unset( $atts['several-widget'] );
