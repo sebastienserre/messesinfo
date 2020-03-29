@@ -36,13 +36,6 @@ An example with Eglise de la Madeleine in Paris is displayed on [Paroisse-cathol
 
 use automatic upgrade
 
-== Screenshots ==
-1. Shortcode display
-2. Widget settings
-3. Plugin option
-4. Widget display
-5. Shortcode Search
-
 == Changelog ==
 * 1.5.6 Rewrite Shortcode to work without Messesinfo API
 * 1.5.0 rewrite the plugins to improve speed and maintenance
