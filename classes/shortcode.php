@@ -16,92 +16,48 @@ class thfo_messeinfo_shortcode {
 
 		shortcode_atts(
 			array(
-				'search',
-				'localityId' => '78/plaisir/saint-pierre',
-				'result'     => '5',
+				'data-localityId'         => '78/plaisir/saint-pierre',
+				'data-displayDetails'     => 'false', //true
+				'data-display'            => 'TREE', // Si data-displayDetails == true
+				'data-open-in-egliseinfo' => 'true',
+				'data-region'             => 'fr', // param obligatoire
+				'several-widget'          => 'false', // add JS
 			),
-			$atts
+			$atts,
+			'messesinfo',
 		);
 
-		$localityId     = esc_html( $atts['localityid'] );
-		$atts['result'] = intval( $atts['result'] );
-
-		$mass = Messesinfo::get_mass_data( $localityId );
-
-
-		$i = 1;
-		$b = 1;
-
-		ob_start();
-
-		if ( empty( $mass->celebrationsTime ) ){
-			?>
-            <p> <?php _e('No mass scheduled', 'messesinfo' ); ?> </p>
-            <?php
-		} else {
-			foreach ( $mass->celebrationsTime as $mess ) {
-				if ( $i <= $atts['result'] ) {
-					$newdate = date_timestamp_get( date_create( $mess->date ) );
-					switch ( $mess->timeType ) {
-						case 'SUNDAYMASS':
-							$type = __( 'Weekly Mass', 'messesinfo' );
-							break;
-						case 'WEEKMASS':
-							$type = __( 'Daily Mass', 'messesinfo' );
-							break;
-
-					}
-
-					$locality = Messesinfo::get_locality_info( $localityId );
-					?>
-                    <div class="messeinfo messeinfo-<?php echo $i ?>">
-                        <div class="messesinfo-left">
-                            <div class="mass-infos mass-infos-<?php echo $i ?>">
-                                <p class="mass-date mass-date-<?php echo $i ?>">
-                                    <strong><?php echo date_i18n( 'l d F Y', $newdate ) . ' - ' . $mess->time ?></strong>
-									<?php echo $type ?>
-                                </p>
-                                <div class="messesinfo-adress">
-                                    <p><?php echo $locality->type . ' ' . $locality->commonName; ?> </p>
-                                    <p><?php echo $locality->address->street; ?> </p>
-                                    <p><?php echo $locality->address->zipCode . ' ' . $locality->address->city; ?></p>
-                                </div>
-
-                                <p><a href="http://egliseinfo.catholique.fr/lieu/<?php echo $mess->localityId ?>"
-                                      target="_blank">
-										<?php _e( 'Link to the church', 'messesinfo' ); ?>
-                                    </a> -
-                                    <a href="http://egliseinfo.catholique.fr/communaute/<?php echo $mess->communityId ?>"
-                                       target="_blank">
-										<?php _e( 'Link to the community', 'messesinfo' ); ?>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-						<?php
-						if ( ! empty( $locality->picture ) ) { ?>
-                            <div class="messesinfo-right">
-                                <img src="<?php echo $locality->picture ?>">
-                            </div>
-							<?php
-						}
-						?>
-                    </div>
-                    <div class="clear"></div>
-					<?php
-					$i ++;
-				}
-			}
+		if ( 'false' === $atts['several-widget'] ){
+			unset( $atts['several-widget'] );
+		}
+		if ( 'true' === $atts['several-widget'] ) {
+			add_action( 'wp_enqueue_scripts', function () {
+				wp_enqueue_script( 'messesinfosJS', 'https://messes.info//Widget/Widget.nocache.js', '', '', true );
+			} );
+			unset( $atts['several-widget'] );
 		}
 
-		$shortcode = ob_get_clean();
-		$shortcode .= Messesinfo::promote();
+		ob_start();
+		?>
+		<div class="EgliseInfo-container">
+			<div data-egliseinfo="lieu"
+			<?php
+			foreach ( $atts as $key => $value ){
+				echo $key . '="'. $value .'"';
+			}
+			?>
+			>
+			</div>
+			<script type="text/javascript" language="javascript"
+			        src="https://messes.info//Widget/Widget.nocache.js"></script>
+			<p>Retrouvez tous les horaires des célébrations sur <a
+					href="https://messes.info//lieu/78/plaisir/saint-pierre">www.messes.info</a>
+			</p>
+		</div>
 
-		/**
-		 * Waiting for an userkey from CEF
-		 */
-		$shortcode = '<p class="warning">' . __( 'The Conférence des Evêques de France (CEF) are now asking for an userkey to use the 
-		Messesinfo API. Please ask them one and contact me with (support@thivinfo.com). This plugin can\'t work without this userkey', 'messesinfo' ) . '</p>';
+		<?php
+		$shortcode = ob_get_clean();
+
 		return $shortcode;
 	}
 }

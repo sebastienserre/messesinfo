@@ -22,7 +22,7 @@ define( 'THFO_MESSINFO_URL', plugin_dir_url( __FILE__ ) );
 define( 'THFO_MESSINFO_DIR', plugin_dir_path( __FILE__ ) );
 
 // Function for easy load files
-function _thfo_messinfo_load_files( $dir, $files, $prefix = '' ) {
+function thfo_messinfo_load_files( $dir, $files, $prefix = '' ) {
 	foreach ( $files as $file ) {
 		if ( is_file( $dir . $prefix . $file . ".php" ) ) {
 			require_once( $dir . $prefix . $file . ".php" );
@@ -32,7 +32,6 @@ function _thfo_messinfo_load_files( $dir, $files, $prefix = '' ) {
 
 add_action( 'plugins_loaded', 'messesinfo_load_file' );
 function messesinfo_load_file() {
-	require_once THFO_MESSINFO_DIR . 'classes/class-messesinfo.php';
 	require_once THFO_MESSINFO_DIR . 'classes/shortcode.php';
 }
 
@@ -42,7 +41,7 @@ function messesinfo_load_admin_style() {
 }
 
 if ( is_admin() ) {
-	_thfo_messinfo_load_files( THFO_MESSINFO_DIR . 'classes/admin/', array( 'settings' ) );
+	//thfo_messinfo_load_files( THFO_MESSINFO_DIR . 'classes/admin/', array( 'settings' ) );
 }
 
 add_action( 'plugins_loaded', 'init_thfo_messinfo_plugin' );
@@ -50,13 +49,13 @@ function init_thfo_messinfo_plugin() {
 	// Load client
 	new thfo_messeinfo_shortcode();
 
-	if ( is_admin() ) {
+/*	if ( is_admin() ) {
 		new settings();
-	}
+	}*/
 }
 
 
 add_action( 'wp_enqueue_scripts', 'thfo_add_style' );
 function thfo_add_style() {
-	wp_enqueue_style( 'messeinfo', plugins_url( 'assets/css/messeinfo.css', __FILE__ ) );
+	wp_enqueue_style( 'messeinfocss', plugins_url( 'assets/css/messeinfo.css', __FILE__ ) );
 }
