@@ -4,21 +4,16 @@ Tags: messes, horaires, messesinfo, egliseinfo, catholique
 Requires at least: 4.6
 Requires PHP: 5.6
 Tested up to: 5.3
-Stable tag: 1.5.5
+Stable tag: 1.5.6
 License: GPL V2 or later
 
 
 == Description ==
 
 *Important Notice*
-This Plugin is no longer maintened as the Conference des Evêques de France closed the API Access and do not allow us to
-claim for an API Key...
-If they'll change their poltics, so I will check...
 
 Display mass schedule with shortcode in your WordPress Website
 This service is freely provided by [Paroisse-catholique.fr](https://template.paroisse-catholique.fr/)
-
-The CEF restrict API Access. I will update this plugin asap if they reply to my request...
 
 == Installation ==
 1. unzip
@@ -28,10 +23,10 @@ The CEF restrict API Access. I will update this plugin asap if they reply to my 
 
 == Frequently Asked Questions ==
 = How to display the Mass Schedule ? =
-With the shortcode [messesinfo localityId='LocalityID' result=25].
+With the shortcode [messesinfo data-localityId='78/plaisir/saint-pierre' data-displayDetails='true' data-display=TREE ].
 
 = Where can I found the LocalityID? =
-You can find it in the plugin's settings. In tool submenu.
+In the Messeinfo Website.
 
 = Where can I see how it works?
 An example with Eglise de la Madeleine in Paris is displayed on [Paroisse-catholique.fr](https://template.paroisse-catholique.fr/)
@@ -49,6 +44,7 @@ use automatic upgrade
 5. Shortcode Search
 
 == Changelog ==
+* 1.5.6 Rewrite Shortcode to work without Messesinfo API
 * 1.5.0 rewrite the plugins to improve speed and maintenance
 * 1.4.0 Add shortcode messeinfo_search
 * 1.3.0 Ok with 4.8 -- Improve Shortcode and Widget search
