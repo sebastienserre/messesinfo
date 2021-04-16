@@ -9,14 +9,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 class thfo_messeinfo_shortcode {
 	function __construct() {
 		add_shortcode( 'messesinfo', array( $this, 'messesinfo_shortcode' ) );
-		add_shortcode( 'messesinfo_search', array( $this, 'messesinfo_shortcode_search' ) );
 	}
 
 	public function messesinfo_shortcode( $atts ) {
 
 		shortcode_atts(
 			array(
-				'data-localityId'         => '78/plaisir/saint-pierre',
+				'data-localityId'         => 'carmaux',
 				'data-displayDetails'     => 'false', //true
 				'data-display'            => 'TREE', // Si data-displayDetails == true
 				'data-open-in-egliseinfo' => 'true',
@@ -26,7 +25,7 @@ class thfo_messeinfo_shortcode {
 			$atts,
 			'messesinfo' );
 
-		if ( 'false' === $atts['several-widget'] ){
+		if ( 'false' === $atts['several-widget'] ) {
 			unset( $atts['several-widget'] );
 		}
 		if ( 'true' === $atts['several-widget'] ) {
@@ -38,21 +37,14 @@ class thfo_messeinfo_shortcode {
 
 		ob_start();
 		?>
-		<div class="EgliseInfo-container">
-			<div data-egliseinfo="lieu"
-			<?php
-			foreach ( $atts as $key => $value ){
-				echo $key . '="'. $value .'"';
-			}
-			?>
-			>
-			</div>
-			<script type="text/javascript" language="javascript"
-			        src="https://messes.info//Widget/Widget.nocache.js"></script>
-			<p>Retrouvez tous les horaires des célébrations sur <a
-					href="https://messes.info//lieu/78/plaisir/saint-pierre">www.messes.info</a>
-			</p>
-		</div>
+        <div class="EgliseInfo-container">
+            <div data-egliseinfo="horaires" data-search="<?php echo $atts['data-localityid']; ?>>"
+                 data-open-in-egliseinfo="<?php echo $atts['data-localityid']; ?>"></div>
+            <script type="text/javascript" language="javascript"
+                    src="https://messes.info//Widget/Widget.nocache.js"></script>
+            <p>Retrouvez tous les horaires des célébrations sur <a href="https://messes.info/horaires/<?php echo $atts['data-localityid']; ?>">www.messes.info</a>
+            </p></div>
+
 
 		<?php
 		$shortcode = ob_get_clean();
