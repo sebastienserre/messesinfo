@@ -21,6 +21,7 @@ class thfo_messeinfo_shortcode {
 				'data-open-in-egliseinfo' => 'true',
 				'data-region'             => 'fr', // param obligatoire
 				'several-widget'          => 'false', // add JS
+                'data-egliseinfo' => 'horaires' // horaires/lieu
 			),
 			$atts,
 			'messesinfo' );
@@ -38,7 +39,7 @@ class thfo_messeinfo_shortcode {
 		ob_start();
 		?>
         <div class="EgliseInfo-container">
-            <div data-egliseinfo="horaires" data-search="<?php echo $atts['data-localityid']; ?>>"
+            <div data-egliseinfo="<?php echo $atts['data-egliseinfo']; ?>" data-search="<?php echo $atts['data-localityid']; ?>>"
                  data-open-in-egliseinfo="<?php echo $atts['data-localityid']; ?>"></div>
             <script type="text/javascript" language="javascript"
                     src="https://messes.info//Widget/Widget.nocache.js"></script>
