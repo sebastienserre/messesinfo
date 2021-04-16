@@ -9,7 +9,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 class thfo_messeinfo_shortcode {
 	function __construct() {
 		add_shortcode( 'messesinfo', array( $this, 'messesinfo_shortcode' ) );
+		add_shortcode( 'messesinfo_no_option', array( $this, 'messesinfo_no_option' ) );
 	}
+
+	public function messesinfo_no_option( $atts ){
+		shortcode_atts(
+			array(
+				'code_to_insert'         => 'carmaux',
+			),
+			$atts,
+			'messesinfo_no_option' );
+
+		return $atts['code_to_insert'];
+
+    }
 
 	public function messesinfo_shortcode( $atts ) {
 
@@ -21,7 +34,7 @@ class thfo_messeinfo_shortcode {
 				'data-open-in-egliseinfo' => 'true',
 				'data-region'             => 'fr', // param obligatoire
 				'several-widget'          => 'false', // add JS
-                'data-egliseinfo' => 'horaires' // horaires/lieu
+				'data-egliseinfo'         => 'horaires' // horaires/lieu
 			),
 			$atts,
 			'messesinfo' );
@@ -39,14 +52,44 @@ class thfo_messeinfo_shortcode {
 		ob_start();
 		?>
         <div class="EgliseInfo-container">
-            <div data-egliseinfo="<?php echo $atts['data-egliseinfo']; ?>" data-search="<?php echo $atts['data-localityid']; ?>>"
-                 data-open-in-egliseinfo="<?php echo $atts['data-localityid']; ?>"></div>
+			<?php
+			switch ( $atts['data-egliseinfo'] ) {
+				case 'horaires':
+					?>
+
+                    <div data-egliseinfo="<?php echo $atts['data-egliseinfo'] ?>"
+                         data-search="<?php echo $atts['data-localityid'] ?>’"
+                         data-open-in-egliseinfo="<?php echo $atts['data-egliseinfo'] ?>">
+                    </div>
+
+					<?php
+					break;
+				case 'lieu':
+					?>
+                    <div data-egliseinfo="<?php echo $atts['data-egliseinfo'] ?>"
+                         data-localityId="<?php echo $atts['data-localityid'] ?>"
+                         data-open-in-egliseinfo="<?php echo $atts['data-egliseinfo'] ?>">
+                    </div>
+
+					<?php
+					break;
+				case 'communaute':
+					?>
+                    <div data-egliseinfo="<?php echo $atts['data-egliseinfo'] ?>"
+                         data-communityId="<?php echo $atts['data-localityid'] ?>"
+                         data-open-in-egliseinfo="<?php echo $atts['data-egliseinfo'] ?>">
+                    </div>
+				<?php
+			}
+			?>
             <script type="text/javascript" language="javascript"
-                    src="https://messes.info//Widget/Widget.nocache.js"></script>
-            <p>Retrouvez tous les horaires des célébrations sur <a href="https://messes.info/horaires/<?php echo $atts['data-localityid']; ?>">www.messes.info</a>
-            </p></div>
+                    src="https://messes.info//Widget/Widget.nocache.js">
 
-
+            </script>
+            <p>Retrouvez tous les horaires des célébrations sur <a
+                        href="https://messes.info/<?php echo $atts['data-egliseinfo'] ?>/<?php echo $atts['data-localityid'] ?>">www.messes.info</a>
+            </p>
+        </div>
 		<?php
 		$shortcode = ob_get_clean();
 

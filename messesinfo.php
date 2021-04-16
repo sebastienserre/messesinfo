@@ -3,9 +3,9 @@
   Plugin Name: Messesinfo
   Plugin URI: https://paroisse-catholique.fr
   Description: Affichez vos horaires de messes facilement sur votre site.
-  Version: 1.5.7
+  Version: 1.5.8
   Author: paroisse-catholique.fr
-  Stable tag: 1.5.7
+  Stable tag: 1.5.8
   Tested up to: 5.7
   Author URI: https://paroisse-catholique.fr/
   Text Domain: messesinfo
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Plugin constants
-define( 'THFO_MESSINFO_VERSION', '1.5.7' );
+define( 'THFO_MESSINFO_VERSION', '1.5.8' );
 define( 'THFO_MESSINFO_FOLDER', 'messesinfo' );
 define( 'THFO_MESSINFO_URL', plugin_dir_url( __FILE__ ) );
 define( 'THFO_MESSINFO_DIR', plugin_dir_path( __FILE__ ) );
